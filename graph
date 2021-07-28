@@ -1,3 +1,6 @@
+#depth first graph traversal
+
+
      #A  B  C  D  E  F  G
 g = [[0, 1, 0, 0, 0, 1, 1],#A
      [1, 0, 1, 0, 0, 0, 1],#B
@@ -17,11 +20,25 @@ def graph_traversal(g, n):
 	path.append(n)
 
 	while (1):
-		if g[n][j] == 1:
-			g[n][j] = 0
-			g[j][n] = 0
+		print(path)
+		if g[n][j] == 1 and vnodes[j] == 0:
+			g[n][j] = 2
+			g[j][n] = 2
 			n = j
-			j = 0
+			vnodes[n] = 1
 			path.append(n)
+			j = -1
+
+		if j == 6:
+			del path[-1]
+			if len(path) == 0:
+				print(g)
+				print(vnodes)
+				break
+			else:
+				n = path[-1]
+				j = -1
 
 		j += 1
+		
+graph_traversal(g, 0)
