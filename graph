@@ -1,1 +1,27 @@
+     #A  B  C  D  E  F  G
+g = [[0, 1, 0, 0, 0, 1, 1],#A
+     [1, 0, 1, 0, 0, 0, 1],#B
+     [0, 1, 0, 1, 0, 0, 1],#C
+     [0, 0, 1, 0, 1, 0, 1],#D
+     [0, 0, 0, 1, 0, 1, 1],#E
+     [1, 0, 0, 0, 1, 0, 1],#F
+     [1, 1, 1, 1, 1, 1, 0] #G
+] 
 
+def graph_traversal(g, n):
+	j = 0    #A  B  C  D  E  F  G
+	vnodes = [0, 0, 0, 0, 0, 0, 0]
+	path = []
+
+	vnodes[n] = 1
+	path.append(n)
+
+	while (1):
+		if g[n][j] == 1:
+			g[n][j] = 0
+			g[j][n] = 0
+			n = j
+			j = 0
+			path.append(n)
+
+		j += 1
